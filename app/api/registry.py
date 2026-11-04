@@ -41,7 +41,7 @@ def endpoint(method, path, *, tag, resumo, roles=None, publico=False, query=None
         bp.add_url_rule(path, endpoint=fn.__name__, view_func=view, methods=[method])
         REGISTRY.append({"method": method.lower(), "path": re.sub(r"<(?:int:)?(\w+)>", lambda m: "{" + _camel(m.group(1)) + "}", path),
                          "tag": tag, "resumo": resumo, "roles": roles, "publico": publico, "query": query or [],
-                         "request": request_ex, "response": response_ex, "status": status, "erros": list(erros),
+                         "request": request_ex, "response": response_ex, "status": status, "erros": dict(erros),
                          "headers": headers or []})
         return fn
     return decorador
