@@ -1,0 +1,59 @@
+[PASS] Auth / T01 Login válido (cliente) — HTTP 200
+[PASS] Auth / T01 Login válido (cliente) — tokenType = 'Bearer'
+[PASS] Auth / T01 Login válido (cliente) — user.perfil = 'CLIENTE'
+[PASS] Auth / Login gerente — HTTP 200
+[PASS] Auth / Login cozinha — HTTP 200
+[PASS] Auth / Login atendente — HTTP 200
+[PASS] Auth / Login admin — HTTP 200
+[PASS] Cardápio / Consultar cardápio da unidade 1 (público) — HTTP 200
+[PASS] Cardápio / Consultar cardápio da unidade 1 (público) — total = 4
+[PASS] Pedidos / T06 Criar pedido válido (canal TOTEM) — HTTP 201
+[PASS] Pedidos / T06 Criar pedido válido (canal TOTEM) — status = 'AGUARDANDO_PAGAMENTO'
+[PASS] Pedidos / T06 Criar pedido válido (canal TOTEM) — canalPedido = 'TOTEM'
+[PASS] Pedidos / T06 Criar pedido válido (canal TOTEM) — total = 37.0
+[PASS] Pedidos / T13 Listar pedidos filtrando por canal — HTTP 200
+[PASS] Pedidos / T13 Listar pedidos filtrando por canal — items[0].canalPedido = 'TOTEM'
+[PASS] Pagamento / T09 Pagamento mock aprovado — HTTP 201
+[PASS] Pagamento / T09 Pagamento mock aprovado — status = 'APROVADO'
+[PASS] Pagamento / T09 Pagamento mock aprovado — pedidoStatus = 'PAGO'
+[PASS] Pedidos / T11a Cozinha inicia preparo — HTTP 200
+[PASS] Pedidos / T11a Cozinha inicia preparo — status = 'EM_PREPARO'
+[PASS] Pedidos / T11b Cozinha marca pronto — HTTP 200
+[PASS] Pedidos / T11b Cozinha marca pronto — status = 'PRONTO'
+[PASS] Pedidos / T11c Atendente entrega — HTTP 200
+[PASS] Pedidos / T11c Atendente entrega — status = 'ENTREGUE'
+[PASS] Pedidos / Criar pedido para recusa — HTTP 201
+[PASS] Pedidos / Criar pedido para recusa — canalPedido = 'APP'
+[PASS] Pagamento / T10 Pagamento mock recusado — HTTP 201
+[PASS] Pagamento / T10 Pagamento mock recusado — status = 'RECUSADO'
+[PASS] Pagamento / T10 Pagamento mock recusado — pedidoStatus = 'PAGAMENTO_RECUSADO'
+[PASS] Pedidos / Criar pedido para falha do gateway — HTTP 201
+[PASS] Pagamento / T16 Falha simulada do gateway (502) — HTTP 502
+[PASS] Pagamento / T16 Falha simulada do gateway (502) — error = 'GATEWAY_PAGAMENTO_INDISPONIVEL'
+[PASS] Estoque / Entrada de estoque (gerente) — HTTP 201
+[PASS] Estoque / Entrada de estoque (gerente) — produtoId = 1
+[PASS] Estoque / Consultar saldo da unidade 1 — HTTP 200
+[PASS] Estoque / Consultar saldo da unidade 1 — total = 4
+[PASS] Fidelidade / Conceder consentimento de fidelidade — HTTP 200
+[PASS] Fidelidade / Conceder consentimento de fidelidade — consentimentoFidelidade = True
+[PASS] Fidelidade / Consultar saldo de pontos — HTTP 200
+[PASS] Fidelidade / Consultar saldo de pontos — consentimentoFidelidade = True
+[PASS] Auditoria / T12 Auditoria registra criação e mudanças de status do pedido — HTTP 200
+[PASS] Auditoria / T12 Auditoria registra criação e mudanças de status do pedido — total = 4
+[PASS] Erros / T02 Listar pedidos sem token (401) — HTTP 401
+[PASS] Erros / T02 Listar pedidos sem token (401) — error = 'TOKEN_AUSENTE'
+[PASS] Erros / T03 Cliente tenta movimentar estoque (403) — HTTP 403
+[PASS] Erros / T03 Cliente tenta movimentar estoque (403) — error = 'PERFIL_SEM_PERMISSAO'
+[PASS] Erros / T04 Pedido sem canalPedido (422) — HTTP 422
+[PASS] Erros / T04 Pedido sem canalPedido (422) — error = 'VALIDACAO_INVALIDA'
+[PASS] Erros / T04 Pedido sem canalPedido (422) — details[0].field = 'canalPedido'
+[PASS] Erros / T04b Pedido com quantidade negativa (422) — HTTP 422
+[PASS] Erros / T04b Pedido com quantidade negativa (422) — error = 'VALIDACAO_INVALIDA'
+[PASS] Erros / T05 Cadastro com e-mail inválido (422) — HTTP 422
+[PASS] Erros / T05 Cadastro com e-mail inválido (422) — details[0].field = 'email'
+[PASS] Erros / T07 Pedido com produto inexistente (404) — HTTP 404
+[PASS] Erros / T07 Pedido com produto inexistente (404) — error = 'PRODUTO_NAO_ENCONTRADO'
+[PASS] Erros / T08 Pedido com estoque insuficiente (409) — HTTP 409
+[PASS] Erros / T08 Pedido com estoque insuficiente (409) — error = 'ESTOQUE_INSUFICIENTE'
+
+Resumo: 57/57 verificações aprovadas

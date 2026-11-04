@@ -1,0 +1,47 @@
+Execução em 2026-11-04T22:59:25Z (UTC) — python3 -m unittest discover -s tests -t . -v
+Python 3.12.3
+test_T01_login_valido_retorna_token (tests.test_api.TestAutenticacaoEAutorizacao.test_T01_login_valido_retorna_token) ... ok
+test_T01b_login_com_senha_errada_retorna_401 (tests.test_api.TestAutenticacaoEAutorizacao.test_T01b_login_com_senha_errada_retorna_401) ... ok
+test_T02_acesso_sem_token_retorna_401 (tests.test_api.TestAutenticacaoEAutorizacao.test_T02_acesso_sem_token_retorna_401) ... ok
+test_T02b_token_adulterado_retorna_401 (tests.test_api.TestAutenticacaoEAutorizacao.test_T02b_token_adulterado_retorna_401) ... ok
+test_T03_cliente_sem_permissao_para_estoque_retorna_403 (tests.test_api.TestAutenticacaoEAutorizacao.test_T03_cliente_sem_permissao_para_estoque_retorna_403) ... ok
+test_T05_cadastro_com_email_invalido_retorna_422 (tests.test_api.TestAutenticacaoEAutorizacao.test_T05_cadastro_com_email_invalido_retorna_422) ... ok
+test_T14_senha_armazenada_com_hash_e_nunca_exposta (tests.test_api.TestAutenticacaoEAutorizacao.test_T14_senha_armazenada_com_hash_e_nunca_exposta) ... ok
+test_cadastro_com_email_duplicado_retorna_409 (tests.test_api.TestAutenticacaoEAutorizacao.test_cadastro_com_email_duplicado_retorna_409) ... ok
+test_cadastro_exige_aceite_da_politica (tests.test_api.TestAutenticacaoEAutorizacao.test_cadastro_exige_aceite_da_politica) ... ok
+test_json_malformado_retorna_400 (tests.test_api.TestAutenticacaoEAutorizacao.test_json_malformado_retorna_400) ... ok
+test_rota_inexistente_retorna_erro_padronizado (tests.test_api.TestAutenticacaoEAutorizacao.test_rota_inexistente_retorna_erro_padronizado) ... ok
+test_T22_todas_as_rotas_estao_documentadas_e_vice_versa (tests.test_api.TestContratoOpenApi.test_T22_todas_as_rotas_estao_documentadas_e_vice_versa) ... ok
+test_exemplos_de_request_do_openapi_sao_aceitos_pela_api (tests.test_api.TestContratoOpenApi.test_exemplos_de_request_do_openapi_sao_aceitos_pela_api) ... ok
+test_health_e_swagger_ui (tests.test_api.TestContratoOpenApi.test_health_e_swagger_ui) ... ok
+test_T17_fidelidade_exige_consentimento_acumula_e_resgata (tests.test_api.TestEstoqueFidelidadeLgpd.test_T17_fidelidade_exige_consentimento_acumula_e_resgata) ... ok
+test_T21_anonimizacao_remove_dados_pessoais_e_bloqueia_login (tests.test_api.TestEstoqueFidelidadeLgpd.test_T21_anonimizacao_remove_dados_pessoais_e_bloqueia_login) ... ok
+test_consulta_de_dados_de_usuario_por_admin_e_auditada (tests.test_api.TestEstoqueFidelidadeLgpd.test_consulta_de_dados_de_usuario_por_admin_e_auditada) ... ok
+test_gerente_nao_opera_estoque_de_outra_unidade (tests.test_api.TestEstoqueFidelidadeLgpd.test_gerente_nao_opera_estoque_de_outra_unidade) ... ok
+test_movimentacao_de_estoque_entrada_saida_e_rastreabilidade (tests.test_api.TestEstoqueFidelidadeLgpd.test_movimentacao_de_estoque_entrada_saida_e_rastreabilidade) ... ok
+test_T09_pagamento_aprovado_atualiza_status_para_pago (tests.test_api.TestPagamentoEStatus.test_T09_pagamento_aprovado_atualiza_status_para_pago) ... ok
+test_T10_pagamento_recusado_marca_pedido_e_devolve_estoque (tests.test_api.TestPagamentoEStatus.test_T10_pagamento_recusado_marca_pedido_e_devolve_estoque) ... ok
+test_T11_fluxo_de_status_por_perfil_e_transicao_invalida (tests.test_api.TestPagamentoEStatus.test_T11_fluxo_de_status_por_perfil_e_transicao_invalida) ... ok
+test_T12_acoes_sensiveis_geram_registro_de_auditoria (tests.test_api.TestPagamentoEStatus.test_T12_acoes_sensiveis_geram_registro_de_auditoria) ... ok
+test_T15_idempotencia_repete_a_mesma_resposta_sem_duplicar (tests.test_api.TestPagamentoEStatus.test_T15_idempotencia_repete_a_mesma_resposta_sem_duplicar) ... ok
+test_T16_falha_do_gateway_retorna_502_mantem_pedido_e_permite_nova_tentativa (tests.test_api.TestPagamentoEStatus.test_T16_falha_do_gateway_retorna_502_mantem_pedido_e_permite_nova_tentativa) ... ok
+test_T19_cancelamento_devolve_estoque_e_respeita_regras_do_cliente (tests.test_api.TestPagamentoEStatus.test_T19_cancelamento_devolve_estoque_e_respeita_regras_do_cliente) ... ok
+test_idempotency_key_de_outro_pedido_retorna_409 (tests.test_api.TestPagamentoEStatus.test_idempotency_key_de_outro_pedido_retorna_409) ... ok
+test_pagamento_sem_idempotency_key_retorna_422 (tests.test_api.TestPagamentoEStatus.test_pagamento_sem_idempotency_key_retorna_422) ... ok
+test_pagar_pedido_ja_pago_retorna_409 (tests.test_api.TestPagamentoEStatus.test_pagar_pedido_ja_pago_retorna_409) ... ok
+test_T04_pedido_sem_canal_retorna_422 (tests.test_api.TestPedidos.test_T04_pedido_sem_canal_retorna_422) ... ok
+test_T04b_canal_invalido_e_quantidade_negativa_retornam_422 (tests.test_api.TestPedidos.test_T04b_canal_invalido_e_quantidade_negativa_retornam_422) ... ok
+test_T06_pedido_valido_calcula_total_no_servidor_e_baixa_estoque (tests.test_api.TestPedidos.test_T06_pedido_valido_calcula_total_no_servidor_e_baixa_estoque) ... ok
+test_T07_produto_inexistente_retorna_404 (tests.test_api.TestPedidos.test_T07_produto_inexistente_retorna_404) ... ok
+test_T07b_unidade_inexistente_retorna_404 (tests.test_api.TestPedidos.test_T07b_unidade_inexistente_retorna_404) ... ok
+test_T07c_produto_fora_do_cardapio_da_unidade_retorna_404 (tests.test_api.TestPedidos.test_T07c_produto_fora_do_cardapio_da_unidade_retorna_404) ... ok
+test_T08_estoque_insuficiente_retorna_409_sem_efeitos_colaterais (tests.test_api.TestPedidos.test_T08_estoque_insuficiente_retorna_409_sem_efeitos_colaterais) ... ok
+test_T13_filtro_por_canal_e_paginacao (tests.test_api.TestPedidos.test_T13_filtro_por_canal_e_paginacao) ... ok
+test_T18_promocao_aplica_desconto_e_valida_elegibilidade (tests.test_api.TestPedidos.test_T18_promocao_aplica_desconto_e_valida_elegibilidade) ... ok
+test_T20_cliente_nao_acessa_pedido_de_outro_cliente (tests.test_api.TestPedidos.test_T20_cliente_nao_acessa_pedido_de_outro_cliente) ... ok
+test_T23_concorrencia_nao_vende_acima_do_estoque (tests.test_api.TestPedidos.test_T23_concorrencia_nao_vende_acima_do_estoque) ... ok
+
+----------------------------------------------------------------------
+Ran 40 tests in 30.534s
+
+OK
