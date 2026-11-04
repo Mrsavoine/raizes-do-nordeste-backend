@@ -1,0 +1,9 @@
+digraph Arq { rankdir=TB; nodesep=0.5; ranksep=0.7; node [shape=box style="filled,rounded" fontname="Helvetica" fontsize=10 width=3.4]; edge [fontname="Helvetica" fontsize=9 color="#1F3864"];
+canais [label="Canais: APP · TOTEM · BALCÃO · PICKUP · WEB" fillcolor="#D9D9D9"];
+api [label="API (app/api)\nControllers REST · autenticação JWT/roles · contratos · OpenAPI · erro padrão" fillcolor="#DEEBF7"];
+app [label="Application (app/application)\nCasos de uso · transações · validação · auditoria" fillcolor="#E2F0D9"];
+dom [label="Domain (app/domain)\nEntidades · enums · máquina de estados · regras (promoção, pontos) · erros" fillcolor="#FFF2CC"];
+inf [label="Infrastructure (app/infrastructure)\nRepositórios SQL · migrations · JWT/scrypt · gateway de pagamento mock" fillcolor="#FCE4D6"];
+db [label="SQLite (database/migrations)" shape=cylinder fillcolor="#EAD1F5"]; ext [label="Gateway de pagamento\n(simulado)" fillcolor="#D9D9D9"];
+canais -> api [label="HTTP/JSON"]; api -> app [label="chama"]; app -> dom [label="usa"]; app -> inf [label="usa repositórios e gateway"];
+inf -> dom [label="constrói entidades" style=dashed]; inf -> db [label="SQL"]; inf -> ext [label="mock em processo" style=dashed]; }
