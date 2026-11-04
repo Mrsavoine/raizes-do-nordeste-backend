@@ -1,0 +1,12 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      JWT_SECRET: ${JWT_SECRET:?defina JWT_SECRET no .env}
+      SEED_ON_START: "true"
+    volumes:
+      - dados:/data
+volumes:
+  dados:
