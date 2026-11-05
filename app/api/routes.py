@@ -89,10 +89,10 @@ def criar_usuario():
     return jsonify(s.usuario(g.servicos.criar_usuario_equipe(g.ctx, _body()))), 201
 
 
-@endpoint("GET", "/usuarios/<int:uid>", tag="Usuários", resumo="Consulta um usuário (gera registro de auditoria de acesso).", roles=ADMIN,
+@endpoint("GET", "/usuarios/<int:id_>", tag="Usuários", resumo="Consulta um usuário (gera registro de auditoria de acesso).", roles=ADMIN,
           response_ex=USUARIO_EX, erros={**E401, **E403, 404: "USUARIO_NAO_ENCONTRADO"})
-def obter_usuario(uid):
-    return jsonify(s.usuario(g.servicos.obter_usuario(g.ctx, uid)))
+def obter_usuario(id_):
+    return jsonify(s.usuario(g.servicos.obter_usuario(g.ctx, id_)))
 
 
 # ------------------------------------------------------------------ unidades / cardápio
@@ -113,29 +113,29 @@ def criar_unidade():
     return jsonify(s.unidade(g.servicos.criar_unidade(g.ctx, _body()))), 201
 
 
-@endpoint("GET", "/unidades/<int:uid>", tag="Unidades", resumo="Consulta uma unidade (informa se está ativa).", publico=True,
+@endpoint("GET", "/unidades/<int:id_>", tag="Unidades", resumo="Consulta uma unidade (informa se está ativa).", publico=True,
           response_ex={"id": 1, "nome": "Raízes Boa Viagem", "cidade": "Recife", "uf": "PE", "ativa": True},
           erros={404: "UNIDADE_NAO_ENCONTRADA"})
-def obter_unidade(uid):
-    return jsonify(s.unidade(g.servicos.obter_unidade(uid)))
+def obter_unidade(id_):
+    return jsonify(s.unidade(g.servicos.obter_unidade(id_)))
 
 
-@endpoint("PATCH", "/unidades/<int:uid>", tag="Unidades", resumo="Atualiza nome ou situação (ativa) da unidade.", roles=ADMIN,
+@endpoint("PATCH", "/unidades/<int:id_>", tag="Unidades", resumo="Atualiza nome ou situação (ativa) da unidade.", roles=ADMIN,
           request_ex={"ativa": False}, response_ex={"id": 1, "nome": "Raízes Boa Viagem", "cidade": "Recife", "uf": "PE", "ativa": False},
           erros={**E401, **E403, 404: "UNIDADE_NAO_ENCONTRADA", 422: "VALIDACAO_INVALIDA"})
-def atualizar_unidade(uid):
-    return jsonify(s.unidade(g.servicos.atualizar_unidade(g.ctx, uid, _body())))
+def atualizar_unidade(id_):
+    return jsonify(s.unidade(g.servicos.atualizar_unidade(g.ctx, id_, _body())))
 
 
-@endpoint("GET", "/unidades/<int:uid>/cardapio", tag="Cardápio", resumo="Consulta o cardápio da unidade (preço local e disponibilidade).",
+@endpoint("GET", "/unidades/<int:id_>/cardapio", tag="Cardápio", resumo="Consulta o cardápio da unidade (preço local e disponibilidade).",
           publico=True, query=PAGINACAO,
           response_ex={"items": [{"produtoId": 1, "nome": "Tapioca de carne de sol", "descricao": "Com queijo coalho", "preco": 18.5,
                                   "disponivel": True, "saldoEstoque": 40}], "page": 1, "limit": 10, "total": 1},
           erros={404: "UNIDADE_NAO_ENCONTRADA"})
-def cardapio(uid):
+def cardapio(id_):
     page, limit, offset = paginacao(request.args)
-    g.servicos.obter_unidade(uid)
-    itens, total = g.servicos.produtos.cardapio(uid, limit, offset)
+    g.servicos.obter_unidade(id_)
+    itens, total = g.servicos.produtos.cardapio(id_, limit, offset)
     return _lista(itens, total, page, limit, lambda i: {
         "produtoId": i["produto_id"], "nome": i["nome"], "descricao": i["descricao"], "preco": s.reais(i["preco_centavos"]),
         "disponivel": bool(i["disponivel"]) and i["saldo"] > 0, "saldoEstoque": i["saldo"]})
@@ -168,11 +168,11 @@ def criar_produto():
     return jsonify(s.produto(g.servicos.criar_produto(g.ctx, _body()))), 201
 
 
-@endpoint("GET", "/produtos/<int:pid>", tag="Produtos", resumo="Consulta um produto.", publico=True,
+@endpoint("GET", "/produtos/<int:id_>", tag="Produtos", resumo="Consulta um produto.", publico=True,
           response_ex={"id": 1, "nome": "Tapioca de carne de sol", "descricao": "Com queijo coalho", "precoBase": 18.5},
           erros={404: "PRODUTO_NAO_ENCONTRADO"})
-def obter_produto(pid):
-    return jsonify(s.produto(g.servicos.obter_produto(pid)))
+def obter_produto(id_):
+    return jsonify(s.produto(g.servicos.obter_produto(id_)))
 
 
 # ------------------------------------------------------------------ estoque
@@ -241,20 +241,20 @@ def listar_pedidos():
     return _lista(itens, total, page, limit, s.pedido)
 
 
-@endpoint("GET", "/pedidos/<int:pid>", tag="Pedidos", resumo="Consulta um pedido e seus pagamentos.",
+@endpoint("GET", "/pedidos/<int:id_>", tag="Pedidos", resumo="Consulta um pedido e seus pagamentos.",
           response_ex={**PEDIDO_EX, "pagamentos": []}, erros={**E401, 403: "UNIDADE_FORA_DO_ESCOPO", 404: "PEDIDO_NAO_ENCONTRADO"})
-def obter_pedido(pid):
-    pedido, pagamentos = g.servicos.obter_pedido(g.ctx, pid)
+def obter_pedido(id_):
+    pedido, pagamentos = g.servicos.obter_pedido(g.ctx, id_)
     return jsonify({**s.pedido(pedido), "pagamentos": [s.pagamento(p) for p in pagamentos]})
 
 
-@endpoint("PATCH", "/pedidos/<int:pid>/status", tag="Pedidos",
+@endpoint("PATCH", "/pedidos/<int:id_>/status", tag="Pedidos",
           resumo="Atualiza o status (cozinha → pronto → entregue) ou cancela, conforme perfil e máquina de estados.",
           request_ex={"status": "EM_PREPARO", "motivo": "Pedido iniciado na chapa"}, response_ex={**PEDIDO_EX, "status": "EM_PREPARO"},
           erros={**E401, 403: "PERFIL_SEM_PERMISSAO_PARA_STATUS | CANCELAMENTO_NAO_PERMITIDO", 404: "PEDIDO_NAO_ENCONTRADO",
                  409: "TRANSICAO_DE_STATUS_INVALIDA | STATUS_RESERVADO_AO_PAGAMENTO", 422: "VALIDACAO_INVALIDA"})
-def atualizar_status(pid):
-    return jsonify(s.pedido(g.servicos.atualizar_status(g.ctx, pid, _body())))
+def atualizar_status(id_):
+    return jsonify(s.pedido(g.servicos.atualizar_status(g.ctx, id_, _body())))
 
 
 # ------------------------------------------------------------------ pagamentos (mock)
@@ -277,10 +277,10 @@ def solicitar_pagamento():
     return resposta, (200 if reaproveitado else 201)
 
 
-@endpoint("GET", "/pagamentos/<int:pid>", tag="Pagamentos", resumo="Consulta um pagamento registrado.", response_ex=PAG_EX,
+@endpoint("GET", "/pagamentos/<int:id_>", tag="Pagamentos", resumo="Consulta um pagamento registrado.", response_ex=PAG_EX,
           erros={**E401, 404: "PAGAMENTO_NAO_ENCONTRADO"})
-def obter_pagamento(pid):
-    return jsonify(s.pagamento(g.servicos.obter_pagamento(g.ctx, pid)))
+def obter_pagamento(id_):
+    return jsonify(s.pagamento(g.servicos.obter_pagamento(g.ctx, id_)))
 
 
 # ------------------------------------------------------------------ fidelidade
@@ -334,11 +334,11 @@ def criar_promocao():
     return jsonify(s.promocao(g.servicos.criar_promocao(g.ctx, _body()))), 201
 
 
-@endpoint("PATCH", "/promocoes/<int:pid>", tag="Promoções", resumo="Ativa ou desativa uma promoção.", roles=GESTAO, request_ex={"ativa": False},
+@endpoint("PATCH", "/promocoes/<int:id_>", tag="Promoções", resumo="Ativa ou desativa uma promoção.", roles=GESTAO, request_ex={"ativa": False},
           response_ex={"id": 1, "codigo": "RAIZES10", "descricao": "10% em pedidos acima de R$ 30", "percentual": 10, "valorMinimo": 30.0, "ativa": False, "validoAte": None},
           erros={**E401, **E403, 404: "PROMOCAO_NAO_ENCONTRADA", 422: "VALIDACAO_INVALIDA"})
-def atualizar_promocao(pid):
-    return jsonify(s.promocao(g.servicos.atualizar_promocao(g.ctx, pid, _body())))
+def atualizar_promocao(id_):
+    return jsonify(s.promocao(g.servicos.atualizar_promocao(g.ctx, id_, _body())))
 
 
 # ------------------------------------------------------------------ auditoria

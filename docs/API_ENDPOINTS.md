@@ -176,7 +176,7 @@ Gerado automaticamente a partir do código (`python -m scripts.gerar_docs_api`).
 }
 ```
 
-### GET /usuarios/{uid}
+### GET /usuarios/{id}
 
 - **Finalidade:** Consulta um usuário (gera registro de auditoria de acesso).
 - **Autenticação/perfis:** JWT — ADMIN
@@ -254,7 +254,7 @@ Gerado automaticamente a partir do código (`python -m scripts.gerar_docs_api`).
 }
 ```
 
-### GET /unidades/{uid}
+### GET /unidades/{id}
 
 - **Finalidade:** Consulta uma unidade (informa se está ativa).
 - **Autenticação/perfis:** público
@@ -273,7 +273,7 @@ Gerado automaticamente a partir do código (`python -m scripts.gerar_docs_api`).
 }
 ```
 
-### PATCH /unidades/{uid}
+### PATCH /unidades/{id}
 
 - **Finalidade:** Atualiza nome ou situação (ativa) da unidade.
 - **Autenticação/perfis:** JWT — ADMIN
@@ -302,7 +302,7 @@ Gerado automaticamente a partir do código (`python -m scripts.gerar_docs_api`).
 
 ## Cardápio
 
-### GET /unidades/{uid}/cardapio
+### GET /unidades/{id}/cardapio
 
 - **Finalidade:** Consulta o cardápio da unidade (preço local e disponibilidade).
 - **Autenticação/perfis:** público
@@ -412,7 +412,7 @@ Gerado automaticamente a partir do código (`python -m scripts.gerar_docs_api`).
 }
 ```
 
-### GET /produtos/{pid}
+### GET /produtos/{id}
 
 - **Finalidade:** Consulta um produto.
 - **Autenticação/perfis:** público
@@ -625,7 +625,7 @@ Gerado automaticamente a partir do código (`python -m scripts.gerar_docs_api`).
 }
 ```
 
-### GET /pedidos/{pid}
+### GET /pedidos/{id}
 
 - **Finalidade:** Consulta um pedido e seus pagamentos.
 - **Autenticação/perfis:** JWT — qualquer perfil autenticado
@@ -664,7 +664,7 @@ Gerado automaticamente a partir do código (`python -m scripts.gerar_docs_api`).
 }
 ```
 
-### PATCH /pedidos/{pid}/status
+### PATCH /pedidos/{id}/status
 
 - **Finalidade:** Atualiza o status (cozinha → pronto → entregue) ou cancela, conforme perfil e máquina de estados.
 - **Autenticação/perfis:** JWT — qualquer perfil autenticado
@@ -759,7 +759,7 @@ Gerado automaticamente a partir do código (`python -m scripts.gerar_docs_api`).
 }
 ```
 
-### GET /pagamentos/{pid}
+### GET /pagamentos/{id}
 
 - **Finalidade:** Consulta um pagamento registrado.
 - **Autenticação/perfis:** JWT — qualquer perfil autenticado
@@ -950,7 +950,7 @@ Gerado automaticamente a partir do código (`python -m scripts.gerar_docs_api`).
 }
 ```
 
-### PATCH /promocoes/{pid}
+### PATCH /promocoes/{id}
 
 - **Finalidade:** Ativa ou desativa uma promoção.
 - **Autenticação/perfis:** JWT — GERENTE, ADMIN

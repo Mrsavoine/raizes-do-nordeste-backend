@@ -1,4 +1,4 @@
-Execução em 2026-11-04T23:01:06Z (UTC) — python3 -m unittest discover -s tests -t . -v
+Execução em 2026-11-05T19:31:34Z (UTC) — python3 -m unittest discover -s tests -t . -v
 Python 3.12.3
 test_T01_login_valido_retorna_token (tests.test_api.TestAutenticacaoEAutorizacao.test_T01_login_valido_retorna_token) ... ok
 test_T01b_login_com_senha_errada_retorna_401 (tests.test_api.TestAutenticacaoEAutorizacao.test_T01b_login_com_senha_errada_retorna_401) ... ok
@@ -42,6 +42,6 @@ test_T20_cliente_nao_acessa_pedido_de_outro_cliente (tests.test_api.TestPedidos.
 test_T23_concorrencia_nao_vende_acima_do_estoque (tests.test_api.TestPedidos.test_T23_concorrencia_nao_vende_acima_do_estoque) ... ok
 
 ----------------------------------------------------------------------
-Ran 40 tests in 31.635s
+Ran 40 tests in 31.296s
 
 OK
