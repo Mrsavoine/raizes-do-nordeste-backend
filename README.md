@@ -59,13 +59,4 @@ python run.py               # http://localhost:8080 · Swagger em /docs
 Usuários de demonstração (apenas ambiente local) estão no README. Execute os testes com `python -m unittest discover -s tests -t . -v`.
 
 ## Estrutura do repositório
-app/ (domain, application, infrastructure, api) · database/migrations/ · tests/ · postman/ · scripts/ · docs/ (diagramas, DER, evidências, API_ENDPOINTS.md) · Dockerfile · docker-compose.yml · .env.example · CHANGELOG.md · LICENSE
-
-## Limitações conhecidas
-Sem refresh nem revogação de token. Sem rate limiting. Sem estorno real ao cancelar pedido já pago (registrado na auditoria como "NAO_IMPLEMENTADO"). Promoções apenas percentuais, sem segmentação. Sem relatórios consolidados para a matriz. SQLite impede múltiplas instâncias. Docker não foi executado. Não foi feito teste de carga nem análise de segurança por ferramenta.
-
-## Contexto acadêmico
-Curso de Análise e Desenvolvimento de Sistemas · Projeto Multidisciplinar · Trilha Back-End · Professora: Prof. Me. Luciane Yanase Kanashiro · Aluno: [NOME] · RU: [RU] · Polo: [POLO] · Semestre: [SEMESTRE]. Projeto de fins educacionais, sem dados reais; o pagamento é totalmente simulado.
-
-## Licença
-MIT.
+app/ (domain, application, infrastructure, api) · database/migrations/ · tests/ · postman/ · scripts/ · docs/ (diagramas, DER, evidências, API_ENDPOINTS.md) · Dockerfile · docker-compose.yml · .env.example · CHANGELOG.md ·
