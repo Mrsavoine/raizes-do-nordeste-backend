@@ -2,6 +2,12 @@
 
 API REST do **Projeto Multidisciplinar (trilha Back-End)** do curso de Análise e Desenvolvimento de Sistemas, 2026. O estudo de caso é a Rede Raízes do Nordeste, uma rede fictícia de lanchonetes nordestinas em expansão, que vende por vários canais e precisa de padronização, rastreabilidade e controle por unidade.
 
+Repositório: https://github.com/Mrsavoine/raizes-do-nordeste-backend
+
+Swagger local: http://localhost:8080/docs (executar com: python run.py)
+
+Coleção Postman: postman/raizes-do-nordeste.postman_collection.json
+
 ## O problema que o projeto resolve
 O cliente compra pelo aplicativo, totem, balcão, retirada ou web, e espera a mesma experiência em todos. A matriz precisa garantir que as regras de negócio sejam únicas, que o estoque de cada unidade seja respeitado e que ações sensíveis (cancelamentos, descontos, ajustes) possam ser auditadas, protegendo os dados pessoais.
 
